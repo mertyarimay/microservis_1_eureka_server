@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.4.1</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.mertyarimay</groupId>
+	<artifactId>eureka_server</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>eureka_server</name>
+	<description>eureka_server</description>
+	<url/>
+	<licenses>
+		<license/>
+	</licenses>
+	<developers>
+		<developer/>
+	</developers>
+	<scm>
+		<connection/>
+		<developerConnection/>
+		<tag/>
+		<url/>
+	</scm>
+	<properties>
+		<encoding>UTF-8</encoding> 	<!--karakterlerin doğru bir şekilde tanımlanmasını sağlar -->
+		<java.version>21</java.version>
+
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding><!--projedeki kaynak dosyalarının doğru şekilde utf8 ile işlenmesini sağlar -->
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding><!--maven raporlarının  doğru bir şekilde utf8  kodlamasıyla oluşturulmasını sağlar-->
+
+		<!--sonarqube ve maven için gerekli jdk nın aslında hangi sürümünün kullanılması gerektiği gösteriliyor-->
+		<maven.compiler.release>21</maven.compiler.release>   <!--Java 21 sürümü ile uyumlu bytecode üretmek için derleyiciye talimat verir. -->
+		<maven.compiler.source>21</maven.compiler.source>   <!--kaynak kodunun java 21 özelliklerine uygun olduğunu belirtir -->
+		<maven.compiler.target>21</maven.compiler.target> <!--derlenen bytecodun  derlenen java 21 sürümünde çalışmasını sağlar-->
+
+		<spring-cloud.version>2024.0.0</spring-cloud.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<!--apache tomcat manuel deployment için -->
+		<defaultGoal>spring-boot:run</defaultGoal>
+		<finalName>${project.artifactId}</finalName> <!--mavenın çıktısını proje ismiyle aynı yapar-->
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.10.1</version>
+				<configuration>
+					<source>21</source>
+					<target>21</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
